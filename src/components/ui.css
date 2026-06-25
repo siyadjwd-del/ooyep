@@ -1,0 +1,107 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--surface-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px 0;
+}
+.card-title {
+  font-size: 16px;
+  color: var(--navy-800);
+}
+.card-subtitle {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+.card-body {
+  padding: 16px 20px 20px;
+}
+.card-body--flush {
+  padding: 0;
+}
+
+/* ---------- Stat cards ---------- */
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 18px 20px;
+}
+.stat-card--accent {
+  background: linear-gradient(160deg, var(--navy-800), var(--navy-700));
+  border-color: transparent;
+}
+.stat-card--accent .stat-label {
+  color: #a9bdd6;
+}
+.stat-card--accent .stat-value {
+  color: #fff;
+}
+.stat-label {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.stat-value {
+  margin: 8px 0 0;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  color: var(--navy-900);
+}
+.stat-foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.stat-hint {
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+.stat-card--accent .stat-hint {
+  color: #93a9c6;
+}
+
+/* ---------- Loader & empty ---------- */
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 80px 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+.spinner {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid var(--surface-line);
+  border-top-color: var(--gold-500);
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.empty-state {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 14px;
+}

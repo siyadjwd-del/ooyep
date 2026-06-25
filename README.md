@@ -30,6 +30,29 @@ Design: a conservative **navy & gold** "trust" theme fitting a fixed income firm
 
 ---
 
+## 📸 Screenshots
+
+| Login | Dashboard |
+| --- | --- |
+| ![Login](screenshots/01-login.png) | ![Dashboard](screenshots/02-dashboard.png) |
+
+| Holdings | Income & Coupons |
+| --- | --- |
+| ![Holdings](screenshots/03-holdings.png) | ![Income](screenshots/04-income.png) |
+
+| Documents Vault | Messages |
+| --- | --- |
+| ![Documents](screenshots/05-documents.png) | ![Messages](screenshots/06-messages.png) |
+
+Regenerate these any time with the dev server running:
+
+```bash
+npm run dev          # terminal 1
+npm run screenshots  # terminal 2 — writes to screenshots/
+```
+
+---
+
 ## 🚀 Quick start (prototype)
 
 ```bash

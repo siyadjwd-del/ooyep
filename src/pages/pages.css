@@ -412,3 +412,10 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Performance --------- */
+.perf-range-toggle {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

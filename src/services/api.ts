@@ -1,9 +1,13 @@
 import type {
+  BenchmarkPoint,
   Client,
   CouponPayment,
+  CreditQuality,
   Holding,
   Message,
+  PerformanceSummary,
   PortfolioSummary,
+  ReturnRow,
   Statement,
   AllocationSlice,
   MaturityBucket,
@@ -12,19 +16,19 @@ import type {
 import * as mock from '../data/mockData'
 
 // ===========================================================================
-// API SERVICE LAYER  —  the single seam between the UI and the data source.
+// API SERVICE LAYER — the single seam between the UI and the data source.
 //
 // Today this returns mock data with a small simulated network delay, so the
 // portal is fully clickable as a prototype.
 //
 // TO CONNECT YOUR SQL SERVER DATABASE:
-//   1. Stand up the backend in /server (Express + the `mssql` driver). It
-//      exposes REST endpoints like GET /api/portfolio/summary that run
-//      parameterised T-SQL queries against your database.
-//   2. Set VITE_API_BASE_URL in a .env file (e.g. http://localhost:4000/api).
-//   3. Set USE_MOCK = false below. Every function will then call the real API
-//      instead of the mock — no UI changes required, because the shapes match
-//      the types in src/data/types.ts.
+// 1. Stand up the backend in /server (Express + the `mssql` driver). It
+// exposes REST endpoints like GET /api/portfolio/summary that run
+// parameterised T-SQL queries against your database.
+// 2. Set VITE_API_BASE_URL in a .env file (e.g. http://localhost:4000/api).
+// 3. Set USE_MOCK = false below. Every function will then call the real API
+// instead of the mock — no UI changes required, because the shapes match
+// the types in src/data/types.ts.
 // ===========================================================================
 
 const USE_MOCK = !import.meta.env.VITE_API_BASE_URL
@@ -61,6 +65,13 @@ export interface DashboardData {
   couponCalendar: CouponPayment[]
 }
 
+export interface PerformanceData {
+  summary: PerformanceSummary
+  benchmarkHistory: BenchmarkPoint[]
+  returnTable: ReturnRow[]
+  creditQuality: CreditQuality
+}
+
 export const api = {
   async login(email: string, password: string): Promise<{ token: string; client: Client }> {
     if (USE_MOCK) {
@@ -90,6 +101,18 @@ export const api = {
       })
     }
     return http('/dashboard')
+  },
+
+  async getPerformance(): Promise<PerformanceData> {
+    if (USE_MOCK) {
+      return delay({
+        summary: mock.performanceSummary,
+        benchmarkHistory: mock.benchmarkHistory,
+        returnTable: mock.returnTable,
+        creditQuality: mock.creditQuality,
+      })
+    }
+    return http('/performance')
   },
 
   async getStatements(): Promise<Statement[]> {

@@ -47,7 +47,9 @@ export interface Holding {
   cusip: string
   couponPct: number
   yieldPct: number
-  rating: string
+  rating: string          // composite label e.g. "AAA"
+  moodyRating: string     // e.g. "Aaa", "Aa1", "Baa2"
+  fitchRating: string     // e.g. "AAA", "AA+", "BBB"
   maturity: string // ISO date
   faceValue: number
   marketValue: number
@@ -76,4 +78,52 @@ export interface Message {
   author: string
   body: string
   sentAt: string // ISO datetime
+}
+
+// ---------------------------------------------------------------------------
+// Performance-specific types
+// ---------------------------------------------------------------------------
+
+/** Monthly benchmark/portfolio value series starting from inception (Jan 2019) */
+export interface BenchmarkPoint {
+  date: string  // ISO month "YYYY-MM-01"
+  portfolio: number    // growth of $10,000 in Sit Invest portfolio
+  bondIndex: number   // growth of $10,000 in Bloomberg US Agg Bond Index
+  sp500: number       // growth of $10,000 in S&P 500
+}
+
+/** Annualised return & volatility row for the comparison table */
+export interface ReturnRow {
+  name: string
+  ret1Y: number | null
+  ret3Y: number | null
+  ret5Y: number | null
+  retSI: number   // Since inception annualised
+  vol: number     // Annualised standard deviation (%)
+}
+
+/** Summary headline metrics shown at the top of the Performance page */
+export interface PerformanceSummary {
+  sinceInceptionTotalReturnPct: number
+  annualisedReturnPct: number
+  bestYear: number            // calendar year e.g. 2023
+  bestYearReturnPct: number
+  worstYear: number           // calendar year e.g. 2022
+  worstYearReturnPct: number
+  currentValue: number        // current portfolio market value
+  inceptionDate: string       // ISO date
+}
+
+/** Breakdown of holdings by credit rating agency */
+export interface CreditBucket {
+  rating: string   // e.g. "Aaa", "AAA", "Aa1", "AA+"
+  marketValue: number
+  pct: number      // % of total portfolio
+}
+
+export interface CreditQuality {
+  moody: CreditBucket[]
+  fitch: CreditBucket[]
+  weightedAvgMoody: string
+  weightedAvgFitch: string
 }

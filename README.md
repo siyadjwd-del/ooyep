@@ -21,7 +21,7 @@ download monthly statements, and message their advisor.
 | **Allocation pie** | Donut chart of allocation by sector (Treasuries, Corp, Muni, Agency, Cash) |
 | **Maturity ladder** | Bar chart of market value maturing by year — key for fixed income |
 | **Holdings table** | Every bond: issuer, coupon, yield, rating, maturity, value, gain |
-| **Income & coupons** | Upcoming and recently-paid coupon calendar with projected income |
+| **Performance** | Growth-of-$10k vs. Bloomberg US Agg & S&P 500, returns/risk table, credit quality |
 | **Documents vault** | Monthly statements, trade confirmations & tax docs — filter and download |
 | **Messages** | Secure direct line to the client's advisor |
 | **Responsive** | Works on desktop, tablet and mobile |
@@ -36,9 +36,9 @@ Design: a conservative **navy & gold** "trust" theme fitting a fixed income firm
 | --- | --- |
 | ![Login](screenshots/01-login.png) | ![Dashboard](screenshots/02-dashboard.png) |
 
-| Holdings | Income & Coupons |
+| Holdings | Performance |
 | --- | --- |
-| ![Holdings](screenshots/03-holdings.png) | ![Income](screenshots/04-income.png) |
+| ![Holdings](screenshots/03-holdings.png) | ![Performance](screenshots/07-performance.png) |
 
 | Documents Vault | Messages |
 | --- | --- |

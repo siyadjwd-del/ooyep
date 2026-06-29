@@ -88,15 +88,7 @@ export default function DashboardPage() {
           <MaturityLadderChart data={maturityLadder} />
         </Card>
 
-        <Card
-          title="Next Payment"
-          subtitle="Upcoming coupon"
-          action={
-            <Link to="/income" className="tag">
-              Income →
-            </Link>
-          }
-        >
+        <Card title="Next Payment" subtitle="Upcoming coupon">
           {nextCoupon && (
             <div style={{ paddingBottom: 4 }}>
               <p style={{ margin: '4px 0 18px', fontSize: 14, color: 'var(--ink-soft)' }}>

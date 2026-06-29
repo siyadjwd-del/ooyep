@@ -3,6 +3,7 @@ import type {
   CouponPayment,
   Holding,
   Message,
+  PerformanceData,
   PortfolioSummary,
   Statement,
   AllocationSlice,
@@ -90,6 +91,18 @@ export const api = {
       })
     }
     return http('/dashboard')
+  },
+
+  async getPerformance(): Promise<PerformanceData> {
+    if (USE_MOCK) {
+      return delay({
+        summary: mock.performanceSummary,
+        history: mock.performanceHistory,
+        stats: mock.performanceStats,
+        credit: mock.creditQuality,
+      })
+    }
+    return http('/performance')
   },
 
   async getStatements(): Promise<Statement[]> {

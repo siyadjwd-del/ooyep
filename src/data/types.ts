@@ -48,6 +48,8 @@ export interface Holding {
   couponPct: number
   yieldPct: number
   rating: string
+  moodys: string // Moody's rating, e.g. 'Aaa', 'Aa2', 'A3'
+  fitch: string // Fitch rating, e.g. 'AAA', 'AA-', 'A-'
   maturity: string // ISO date
   faceValue: number
   marketValue: number
@@ -76,4 +78,64 @@ export interface Message {
   author: string
   body: string
   sentAt: string // ISO datetime
+}
+
+// ---------------------------------------------------------------------------
+// Performance & benchmarking
+// ---------------------------------------------------------------------------
+
+// One monthly observation of index levels (base 100 at inception). The UI
+// re-bases these to a "growth of $10,000" figure for the selected range.
+export interface PerformancePoint {
+  date: string // ISO month
+  portfolio: number
+  aggBond: number // Bloomberg US Aggregate Bond Index
+  sp500: number // S&P 500 Index
+}
+
+export interface YearReturn {
+  year: number
+  returnPct: number
+}
+
+export interface PerformanceSummary {
+  inceptionDate: string // ISO date
+  currentValue: number
+  sinceInceptionTotalReturnPct: number
+  annualizedReturnPct: number
+  bestYear: YearReturn
+  worstYear: YearReturn
+}
+
+// Trailing annualized returns + volatility for one series.
+export interface ReturnStats {
+  key: 'portfolio' | 'aggBond' | 'sp500'
+  name: string
+  color: string
+  oneYearPct: number
+  threeYearPct: number
+  fiveYearPct: number
+  sinceInceptionPct: number
+  volatilityPct: number
+}
+
+// One rating band's share of the portfolio (by either agency).
+export interface RatingBucket {
+  rating: string // 'Aaa' | 'Aa' | ... (Moody's) or 'AAA' | 'AA' | ... (Fitch)
+  marketValue: number
+  pct: number
+}
+
+export interface CreditQuality {
+  moodys: RatingBucket[]
+  fitch: RatingBucket[]
+  weightedAverageMoodys: string
+  weightedAverageFitch: string
+}
+
+export interface PerformanceData {
+  summary: PerformanceSummary
+  history: PerformancePoint[]
+  stats: ReturnStats[]
+  credit: CreditQuality
 }

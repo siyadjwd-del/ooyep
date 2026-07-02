@@ -1,0 +1,41 @@
+# ── Data safety ───────────────────────────────────────────────────
+# Nothing with real client or holdings data is EVER committed.
+# Query results, extracts, and anything exported from SSMS/ADS stay
+# out of git. If you need to keep an extract, put it outside the repo.
+
+# Data extracts
+*.csv
+*.xlsx
+*.xls
+*.xlsm
+*.parquet
+*.bak
+*.bcp
+*.dat
+
+# Power BI files with embedded/imported data.
+# Commit .pbit templates (no data) — never .pbix.
+*.pbix
+
+# Connection strings & credentials
+.env
+.env.*
+*.dtsConfig
+*.rdl.data
+*connectionstring*
+*connection-string*
+*credentials*
+secrets.*
+*.pfx
+*.pem
+*.ppk
+*.key
+
+# SSMS / editor / OS litter
+*.suo
+*.ssms_suo
+~$*
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

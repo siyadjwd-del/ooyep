@@ -26,3 +26,26 @@ pnpm-debug.log*
 
 # TS build info
 *.tsbuildinfo
+
+# ── Data safety (Rimes EDM workspace) ─────────────────────────────
+# Nothing with real client or holdings data is ever committed.
+# Data extracts
+*.csv
+*.xlsx
+*.xls
+*.xlsm
+*.parquet
+*.bak
+# Power BI files with embedded/imported data (commit .pbit templates instead)
+*.pbix
+# Connection strings & credentials
+*.dtsConfig
+*.rdl.data
+*connectionstring*
+*connection-string*
+*credentials*
+secrets.*
+*.pfx
+*.pem
+*.ppk
+*.key
